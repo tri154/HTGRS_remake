@@ -1,0 +1,331 @@
+227508	Naloxone reverses the antihypertensive effect of clonidine .|
+        In unanesthetized , spontaneously hypertensive rats the decrease in blood pressure and heart rate produced by intravenous clonidine , 5 to 20 micrograms / kg , was inhibited or reversed by nalozone , 0 . 2 to 2 mg / kg .|
+        The hypotensive effect of 100 mg / kg alpha - methyldopa was also partially reversed by naloxone .|
+        Naloxone alone did not affect either blood pressure or heart rate .|In brain membranes from spontaneously hypertensive rats clonidine , 10 ( - 8 ) to 10 ( - 5 ) M , did not influence stereoselective binding of [ 3H ] - naloxone ( 8 nM ) , and naloxone , 10 ( - 8 ) to 10 ( - 4 ) M , did not influence clonidine - suppressible binding of [ 3H ] - dihydroergocryptine ( 1 nM ) .|
+        These findings indicate that in spontaneously hypertensive rats the effects of central alpha - adrenoceptor stimulation involve activation of opiate receptors .|
+        As naloxone and clonidine do not appear to interact with the same receptor site , the observed functional antagonism suggests the release of an endogenous opiate by clonidine or alpha - methyldopa and the possible role of the opiate in the central control of sympathetic tone .
+1:CID:2	R2L	NON-CROSS	58-61	51-52	D008750	alpha - methyldopa|alpha - methyldopa	Chemical	58:203	61:206	2:6	D007022	hypotensive	Disease	51	52	2
+1:NR:2	L2R	NON-CROSS	0-1	12-13	D009270	Naloxone|naloxone|Naloxone|naloxone|naloxone	Chemical	0:66:68:119:175	1:67:69:120:176	0:2:3:4:6	D006973	hypertensive|hypertensive|hypertensive	Disease	12:85:158	13:86:159	1:4:5
+1:NR:2	L2R	NON-CROSS	51-52	66-67	D009270	Naloxone|naloxone|Naloxone|naloxone|naloxone	Chemical	0:66:68:119:175	1:67:69:120:176	0:2:3:4:6	D007022	hypotensive	Disease	51	52	2
+1:NR:2	L2R	NON-CROSS	85-86	87-88	D003000	clonidine|clonidine|clonidine|clonidine|clonidine|clonidine	Chemical	6:25:87:137:177:201	7:26:88:138:178:202	0:1:4:4:6:6	D006973	hypertensive|hypertensive|hypertensive	Disease	12:85:158	13:86:159	1:4:5
+1:NR:2	L2R	CROSS	25-26	51-52	D003000	clonidine|clonidine|clonidine|clonidine|clonidine|clonidine	Chemical	6:25:87:137:177:201	7:26:88:138:178:202	0:1:4:4:6:6	D007022	hypotensive	Disease	51	52	2
+1:NR:2	R2L	CROSS	85-86	58-61	D008750	alpha - methyldopa|alpha - methyldopa	Chemical	58:203	61:206	2:6	D006973	hypertensive|hypertensive|hypertensive	Disease	12:85:158	13:86:159	1:4:5
+
+#每一个prs = chunks(line[2:], 17)，p[8], p[9]表示是该化学物质实体所有提及的开始结束位置，p[14],p[15]表示疾病开始结束位置，p[0]表示relation_type, p[1]决定化学物质和疾病哪个是头尾实体
+#p[5]表示化学物质实体id, p[11]为疾病实体id, p[16]为疾病实体所在句子id, p[10]为实体提及所在句子id, p[2]为是否跨句, p[3],p[4]分别表示化学物质实体第一个提及所在位置，疾病实体第一个提及所在位置
+
+[{"vertexSet": [[{"pos": [0, 4], "type": "ORG", "sent_id": 0, "name": "Zest Airways, Inc."}, {"sent_id": 0, "type": "ORG", "pos": [10, 15], "name": "Asian Spirit and Zest Air"}, {"name": "AirAsia Zest", "pos": [6, 8], "sent_id": 0, "type": "ORG"}, {"name": "AirAsia Zest", "pos": [19, 21], "sent_id": 6, "type": "ORG"}], [{"name": "Ninoy Aquino International Airport", "pos": [4, 8], "sent_id": 3, "type": "LOC"}, {"name": "Ninoy Aquino International Airport", "pos": [26, 30], "sent_id": 0, "type": "LOC"}], [{"name": "Pasay City", "pos": [31, 33], "sent_id": 0, "type": "LOC"}], [{"name": "Metro Manila", "pos": [34, 36], "sent_id": 0, "type": "LOC"}], [{"name": "Philippines", "pos": [38, 39], "sent_id": 0, "type": "LOC"}, {"name": "Philippines", "pos": [13, 14], "sent_id": 4, "type": "LOC"}, {"sent_id": 5, "type": "LOC", "pos": [25, 29], "name": "Republic of the Philippines"}], [{"name": "Manila", "pos": [13, 14], "sent_id": 1, "type": "LOC"}, {"name": "Manila", "pos": [9, 10], "sent_id": 3, "type": "LOC"}], [{"name": "Cebu", "pos": [15, 16], "sent_id": 1, "type": "LOC"}], [{"pos": [17, 18], "type": "NUM", "sent_id": 1, "name": "24"}], [{"pos": [1, 2], "type": "TIME", "sent_id": 2, "name": "2013"}, {"pos": [1, 5], "type": "TIME", "sent_id": 5, "name": "August 16, 2013"}], [{"pos": [9, 11], "type": "ORG", "name": "Philippines AirAsia", "sent_id": 2}], [{"pos": [5, 7], "type": "ORG", "sent_id": 4, "name": "Asian Spirit"}], [{"pos": [7, 13], "type": "ORG", "sent_id": 5, "name": "Civil Aviation Authority of the Philippines"}, {"name": "CAAP", "pos": [14, 15], "sent_id": 5, "type": "ORG"}], [{"name": "Zest Air", "pos": [34, 36], "sent_id": 5, "type": "ORG"}, {"pos": [7, 9], "type": "ORG", "sent_id": 6, "name": "Zest Air"}], [{"sent_id": 6, "type": "NUM", "pos": [2, 4], "name": "a year"}], [{"name": "AirAsia", "pos": [5, 6], "sent_id": 6, "type": "ORG"}], [{"pos": [5, 7], "type": "ORG", "name": "AirAsia Philippines", "sent_id": 7}], [{"pos": [8, 10], "type": "TIME", "sent_id": 7, "name": "January 2016"}]],
+  "labels": [{"r": "P159", "h": 0, "t": 2, "evidence": [0]}, {"r": "P17", "h": 0, "t": 4, "evidence": [2, 4, 7]}, {"r": "P17", "h": 12, "t": 4, "evidence": [6, 7]}, {"r": "P17", "h": 2, "t": 4, "evidence": [0]}, {"r": "P131", "h": 2, "t": 3, "evidence": [0]}, {"r": "P150", "h": 4, "t": 3, "evidence": [0]}, {"r": "P17", "h": 5, "t": 4, "evidence": [0, 3]}, {"r": "P150", "h": 3, "t": 2, "evidence": [0]}, {"r": "P131", "h": 3, "t": 4, "evidence": [0, 3]}, {"r": "P17", "h": 3, "t": 4, "evidence": [0, 3]}, {"r": "P131", "h": 1, "t": 2, "evidence": [0, 3]}, {"r": "P17", "h": 1, "t": 4, "evidence": [0, 3]}, {"r": "P17", "h": 10, "t": 4, "evidence": [4]}],
+  "title": "AirAsia Zest",
+  "sents": [["Zest", "Airways", ",", "Inc.", "operated", "as", "AirAsia", "Zest", "(", "formerly", "Asian", "Spirit", "and", "Zest", "Air", ")", ",", "was", "a", "low", "-", "cost", "airline", "based", "at", "the", "Ninoy", "Aquino", "International", "Airport", "in", "Pasay", "City", ",", "Metro", "Manila", "in", "the", "Philippines", "."], ["It", "operated", "scheduled", "domestic", "and", "international", "tourist", "services", ",", "mainly", "feeder", "services", "linking", "Manila", "and", "Cebu", "with", "24", "domestic", "destinations", "in", "support", "of", "the", "trunk", "route", "operations", "of", "other", "airlines", "."],
+    ["In", "2013", ",", "the", "airline", "became", "an", "affiliate", "of", "Philippines", "AirAsia", "operating", "their", "brand", "separately", "."], ["Its", "main", "base", "was", "Ninoy", "Aquino", "International", "Airport", ",", "Manila", "."], ["The", "airline", "was", "founded", "as", "Asian", "Spirit", ",", "the", "first", "airline", "in", "the", "Philippines", "to", "be", "run", "as", "a", "cooperative", "."], ["On", "August", "16", ",", "2013", ",", "the", "Civil", "Aviation", "Authority", "of", "the", "Philippines", "(", "CAAP", ")", ",", "the", "regulating", "body", "of", "the", "Government", "of", "the", "Republic", "of", "the", "Philippines", "for", "civil", "aviation", ",", "suspended", "Zest", "Air", "flights", "until", "further", "notice", "because", "of", "safety", "issues", "."],
+    ["Less", "than", "a", "year", "after", "AirAsia", "and", "Zest", "Air", "'s", "strategic", "alliance", ",", "the", "airline", "has", "been", "rebranded", "as", "AirAsia", "Zest", "."],
+    ["The", "airline", "was", "merged", "into", "AirAsia", "Philippines", "in", "January", "2016", "."]]},]
+
+创建字典convert
+[{"vertexSet":[[{"pos":[],"type":"","sent_id": , "name":""},]],
+  "labels":[{"r":"1:NR:2"/"1:CID:2", "h": , "t": , #"evidence":#},{}],
+  "title":227508,
+  "sents":[["Naloxone", "reverses", "the", "antihypertensive", "effect", "of", "clonidine", "."], [word in sent2],...]},...]
+
+23872883	Biochemical effects of Solidago virgaurea extract on experimental cardiotoxicity .|
+            Cardiovascular diseases ( CVDs ) are the major health problem of advanced as well as developing countries of the world .|
+            The aim of the present study was to investigate the protective effect of the Solidago virgaurea extract on isoproterenol - induced cardiotoxicity in rats .|
+            The subcutaneous injection of isoproterenol ( 30 mg / kg ) into rats twice at an interval of 24 h , for two consecutive days , led to a significant increase in serum lactate dehydrogenase , creatine phosphokinase , alanine transaminase , aspartate transaminase , and angiotensin - converting enzyme activities , total cholesterol , triglycerides , free serum fatty acid , cardiac tissue malondialdehyde ( MDA ) , and nitric oxide levels and a significant decrease in levels of glutathione and superoxide dismutase in cardiac tissue as compared to the normal control group ( P < 0 . 05 ) .|
+            Pretreatment with S . virgaurea extract for 5 weeks at a dose of 250 mg / kg followed by isoproterenol injection significantly prevented the observed alterations .|
+            Captopril ( 50 mg / kg / day , given orally ) , an inhibitor of angiotensin - converting enzyme used as a standard cardioprotective drug , was used as a positive control in this study .|
+            The data of the present study suggest that S . virgaurea extract exerts its protective effect by decreasing MDA level and increasing the antioxidant status in isoproterenol - treated rats .|
+            The study emphasizes the beneficial action of S . virgaurea extract as a cardioprotective agent .
+1:CID:2	R2L	NON-CROSS	52-53	49-50	D007545	isoproterenol|isoproterenol|isoproterenol|isoproterenol	Chemical	49:60:177:248	50:61:178:249	2:3:4:6	D066126	cardiotoxicity|cardiotoxicity	Disease	8:52	9:53	0:2
+1:NR:2	R2L	CROSS	89-90	52-53	D019344	lactate	Chemical	89	90	3	D066126	cardiotoxicity|cardiotoxicity	Disease	8:52	9:53	0:2
+1:NR:2	R2L	CROSS	92-93	52-53	D003401	creatine	Chemical	92	93	3	D066126	cardiotoxicity|cardiotoxicity	Disease	8:52	9:53	0:2
+1:NR:2	R2L	CROSS	95-96	52-53	D000409	alanine	Chemical	95	96	3	D066126	cardiotoxicity|cardiotoxicity	Disease	8:52	9:53	0:2
+1:NR:2	R2L	CROSS	98-99	52-53	D001224	aspartate	Chemical	98	99	3	D066126	cardiotoxicity|cardiotoxicity	Disease	8:52	9:53	0:2
+1:NR:2	R2L	CROSS	102-103	52-53	D000809	angiotensin|angiotensin	Chemical	102:201	103:202	3:5	D066126	cardiotoxicity|cardiotoxicity	Disease	8:52	9:53	0:2
+1:NR:2	R2L	CROSS	109-110	52-53	D002784	cholesterol	Chemical	109	110	3	D066126	cardiotoxicity|cardiotoxicity	Disease	8:52	9:53	0:2
+1:NR:2	R2L	CROSS	111-112	52-53	D014280	triglycerides	Chemical	111	112	3	D066126	cardiotoxicity|cardiotoxicity	Disease	8:52	9:53	0:2
+1:NR:2	R2L	CROSS	115-117	52-53	D005227	fatty acid	Chemical	115	117	3	D066126	cardiotoxicity|cardiotoxicity	Disease	8:52	9:53	0:2
+1:NR:2	R2L	CROSS	120-121	52-53	D008315	malondialdehyde|MDA|MDA	Chemical	120:122:240	121:123:241	3:3:6	D066126	cardiotoxicity|cardiotoxicity	Disease	8:52	9:53	0:2
+1:NR:2	R2L	CROSS	126-128	52-53	D009569	nitric oxide	Chemical	126	128	3	D066126	cardiotoxicity|cardiotoxicity	Disease	8:52	9:53	0:2
+1:NR:2	R2L	CROSS	136-137	52-53	D005978	glutathione	Chemical	136	137	3	D066126	cardiotoxicity|cardiotoxicity	Disease	8:52	9:53	0:2
+1:NR:2	R2L	CROSS	138-139	52-53	D013481	superoxide	Chemical	138	139	3	D066126	cardiotoxicity|cardiotoxicity	Disease	8:52	9:53	0:2
+1:NR:2	R2L	CROSS	185-186	52-53	D002216	Captopril	Chemical	185	186	5	D066126	cardiotoxicity|cardiotoxicity	Disease	8:52	9:53	0:2
+1:NR:2	R2L	CROSS	49-50	13-14	D007545	isoproterenol|isoproterenol|isoproterenol|isoproterenol	Chemical	49:60:177:248	50:61:178:249	2:3:4:6	D002318	Cardiovascular diseases|CVDs	Disease	10:13	12:14	1:1
+1:NR:2	R2L	CROSS	89-90	13-14	D019344	lactate	Chemical	89	90	3	D002318	Cardiovascular diseases|CVDs	Disease	10:13	12:14	1:1
+1:NR:2	R2L	CROSS	92-93	13-14	D003401	creatine	Chemical	92	93	3	D002318	Cardiovascular diseases|CVDs	Disease	10:13	12:14	1:1
+1:NR:2	R2L	CROSS	95-96	13-14	D000409	alanine	Chemical	95	96	3	D002318	Cardiovascular diseases|CVDs	Disease	10:13	12:14	1:1
+1:NR:2	R2L	CROSS	98-99	13-14	D001224	aspartate	Chemical	98	99	3	D002318	Cardiovascular diseases|CVDs	Disease	10:13	12:14	1:1
+1:NR:2	R2L	CROSS	102-103	13-14	D000809	angiotensin|angiotensin	Chemical	102:201	103:202	3:5	D002318	Cardiovascular diseases|CVDs	Disease	10:13	12:14	1:1
+1:NR:2	R2L	CROSS	109-110	13-14	D002784	cholesterol	Chemical	109	110	3	D002318	Cardiovascular diseases|CVDs	Disease	10:13	12:14	1:1
+1:NR:2	R2L	CROSS	111-112	13-14	D014280	triglycerides	Chemical	111	112	3	D002318	Cardiovascular diseases|CVDs	Disease	10:13	12:14	1:1
+1:NR:2	R2L	CROSS	115-117	13-14	D005227	fatty acid	Chemical	115	117	3	D002318	Cardiovascular diseases|CVDs	Disease	10:13	12:14	1:1
+1:NR:2	R2L	CROSS	120-121	13-14	D008315	malondialdehyde|MDA|MDA	Chemical	120:122:240	121:123:241	3:3:6	D002318	Cardiovascular diseases|CVDs	Disease	10:13	12:14	1:1
+1:NR:2	R2L	CROSS	126-128	13-14	D009569	nitric oxide	Chemical	126	128	3	D002318	Cardiovascular diseases|CVDs	Disease	10:13	12:14	1:1
+1:NR:2	R2L	CROSS	136-137	13-14	D005978	glutathione	Chemical	136	137	3	D002318	Cardiovascular diseases|CVDs	Disease	10:13	12:14	1:1
+1:NR:2	R2L	CROSS	138-139	13-14	D013481	superoxide	Chemical	138	139	3	D002318	Cardiovascular diseases|CVDs	Disease	10:13	12:14	1:1
+1:NR:2	R2L	CROSS	185-186	13-14	D002216	Captopril	Chemical	185	186	5	D002318	Cardiovascular diseases|CVDs	Disease	10:13	12:14	1:1
+
+#第四句话中的disulfiram和第三句话中的句子属于邻接句子,
+18023325	Acute vocal fold palsy after acute disulfiram intoxication .|
+            Acute peripheral neuropathy caused by a disulfiram overdose is very rare and there is no report of it leading to vocal fold palsy .|
+            A 49 - year - old woman was transferred to our department because of quadriparesis , lancinating pain , sensory loss , and paresthesia of the distal limbs .|
+            One month previously , she had taken a single high dose of disulfiram ( 130 tablets of ALCOHOL STOP TAB , Shin - Poong Pharm .|
+            Co . , Ansan , Korea ) in a suicide attempt .|
+            She was not an alcoholic .|
+            For the first few days after ingestion , she was in a confused state and had mild to moderate ataxia and giddiness .|
+            She noticed hoarseness and distally accentuated motor and sensory dysfunction after she had recovered from this state .|
+            A nerve conduction study was consistent with severe sensorimotor axonal polyneuropathy .|
+            Laryngeal electromyography ( thyroarytenoid muscle ) showed ample denervation potentials .|
+            Laryngoscopy revealed asymmetric vocal fold movements during phonation .|
+            Her vocal change and weakness began to improve spontaneously about 3 weeks after transfer .|
+            This was a case of acute palsy of the recurrent laryngeal nerve and superimposed severe acute sensorimotor axonal polyneuropathy caused by high - dose disulfiram intoxication .
+1:CID:2	R2L	NON-CROSS	6-7	1-4	D004221	disulfiram|disulfiram|disulfiram|disulfiram	Chemical	6:15:74:218	7:16:75:219	0:1:3:12	D014826	vocal fold palsy|vocal fold palsy	Disease	1:29	4:32	0:1
+1:CID:2	L2R	NON-CROSS	6-7	10-12	D004221	disulfiram|disulfiram|disulfiram|disulfiram	Chemical	6:15:74:218	7:16:75:219	0:1:3:12	D010523	peripheral neuropathy	Disease	10	12	1
+1:CID:2	L2R	CROSS	47-48	74-75	D004221	disulfiram|disulfiram|disulfiram|disulfiram	Chemical	6:15:74:218	7:16:75:219	0:1:3:12	D011782	quadriparesis	Disease	47	48	2
+1:CID:2	L2R	CROSS	50-51	74-75	D004221	disulfiram|disulfiram|disulfiram|disulfiram	Chemical	6:15:74:218	7:16:75:219	0:1:3:12	D010146	pain	Disease	50	51	2
+1:CID:2	L2R	CROSS	56-57	74-75	D004221	disulfiram|disulfiram|disulfiram|disulfiram	Chemical	6:15:74:218	7:16:75:219	0:1:3:12	D010292	paresthesia	Disease	56	57	2
+1:CID:2	L2R	CROSS	74-75	125-126	D004221	disulfiram|disulfiram|disulfiram|disulfiram	Chemical	6:15:74:218	7:16:75:219	0:1:3:12	D001259	ataxia	Disease	125	126	6
+1:NR:2	R2L	CROSS	79-80	29-32	D000431	ALCOHOL	Chemical	79	80	3	D014826	vocal fold palsy|vocal fold palsy	Disease	1:29	4:32	0:1
+1:NR:2	L2R	NON-CROSS	15-16	16-17	D004221	disulfiram|disulfiram|disulfiram|disulfiram	Chemical	6:15:74:218	7:16:75:219	0:1:3:12	D062787	overdose	Disease	16	17	1
+1:NR:2	L2R	CROSS	52-54	74-75	D004221	disulfiram|disulfiram|disulfiram|disulfiram	Chemical	6:15:74:218	7:16:75:219	0:1:3:12	C580162	sensory loss	Disease	52	54	2
+1:NR:2	L2R	CROSS	74-75	127-128	D004221	disulfiram|disulfiram|disulfiram|disulfiram	Chemical	6:15:74:218	7:16:75:219	0:1:3:12	D004244	giddiness	Disease	127	128	6
+1:NR:2	L2R	CROSS	74-75	131-132	D004221	disulfiram|disulfiram|disulfiram|disulfiram	Chemical	6:15:74:218	7:16:75:219	0:1:3:12	D006685	hoarseness	Disease	131	132	7
+1:NR:2	L2R	NON-CROSS	212-213	218-219	D004221	disulfiram|disulfiram|disulfiram|disulfiram	Chemical	6:15:74:218	7:16:75:219	0:1:3:12	D011115	polyneuropathy|polyneuropathy	Disease	157:212	158:213	8:12
+not_include	L2R	NON-CROSS	200-201	218-219	D004221	disulfiram|disulfiram|disulfiram|disulfiram	Chemical	6:15:74:218	7:16:75:219	0:1:3:12	D010243	palsy	Disease	200	201	12
+1:NR:2	R2L	CROSS	79-80	10-12	D000431	ALCOHOL	Chemical	79	80	3	D010523	peripheral neuropathy	Disease	10	12	1
+1:NR:2	R2L	CROSS	79-80	16-17	D000431	ALCOHOL	Chemical	79	80	3	D062787	overdose	Disease	16	17	1
+1:NR:2	R2L	CROSS	79-80	47-48	D000431	ALCOHOL	Chemical	79	80	3	D011782	quadriparesis	Disease	47	48	2
+1:NR:2	R2L	CROSS	79-80	50-51	D000431	ALCOHOL	Chemical	79	80	3	D010146	pain	Disease	50	51	2
+1:NR:2	R2L	CROSS	79-80	52-54	D000431	ALCOHOL	Chemical	79	80	3	C580162	sensory loss	Disease	52	54	2
+1:NR:2	R2L	CROSS	79-80	56-57	D000431	ALCOHOL	Chemical	79	80	3	D010292	paresthesia	Disease	56	57	2
+1:NR:2	L2R	CROSS	79-80	125-126	D000431	ALCOHOL	Chemical	79	80	3	D001259	ataxia	Disease	125	126	6
+1:NR:2	L2R	CROSS	79-80	127-128	D000431	ALCOHOL	Chemical	79	80	3	D004244	giddiness	Disease	127	128	6
+1:NR:2	L2R	CROSS	79-80	131-132	D000431	ALCOHOL	Chemical	79	80	3	D006685	hoarseness	Disease	131	132	7
+1:NR:2	L2R	CROSS	79-80	157-158	D000431	ALCOHOL	Chemical	79	80	3	D011115	polyneuropathy|polyneuropathy	Disease	157:212	158:213	8:12
+1:NR:2	L2R	CROSS	79-80	200-201	D000431	ALCOHOL	Chemical	79	80	3	D010243	palsy	Disease	200	201	12
+
+
+6203632	Development of isoproterenol - induced cardiac hypertrophy .|
+        The development of cardiac hypertrophy was studied in adult female Wistar rats following daily subcutaneous injections of isoproterenol ( ISO ) ( 0 . 3 mg / kg body weight ) .|
+        A time course was established for the change in tissue mass , RNA and DNA content , as well as hydroxyproline content .|
+        Heart weight increased 44 % after 8 days of treatment with a half time of 3 . 4 days .|
+        Ventricular RNA content was elevated 26 % after 24 h of a single injection and reached a maximal level following 8 days of therapy .|
+        The half time for RNA accumulation was 2 . 0 days .|
+        The total content of hydroxyproline remained stable during the first 2 days of treatment but increased 46 % after 4 days of therapy .|
+        Ventricular DNA content was unchanged during the early stage ( 1 - 4 days ) of hypertrophic growth but increased to a new steady - state level 19 % above the controls after 8 days of treatment .|
+        Intraventricular pressures and coronary flow measures were similar for control and experimental animals following 4 days of developed hypertrophy .|
+        However , dP / dt in the ISO - treated hearts was slightly but significantly ( P less than 0 . 05 ) elevated .|
+        These data indicate that the adaptive response to ISO shows an early hypertrophic phase ( 1 - 4 days ) characterized by a substantial increase in RNA content and cardiac mass in the absence of changes in DNA .|
+        However , prolonged stimulation ( 8 - 12 days ) appears to represent a complex integration of both cellular hypertrophy and hyperplasia within the heart .
+
+1:CID:2	L2R	NON-CROSS	2-3	5-7	D007545	isoproterenol|isoproterenol|ISO|ISO|ISO	Chemical	2:25:27:209:235	3:26:28:210:236	0:1:1:9:10	D006332	cardiac hypertrophy|cardiac hypertrophy	Disease	5:11	7:13	0:1
+1:CID:2	L2R	CROSS	235-236	287-288	D007545	isoproterenol|isoproterenol|ISO|ISO|ISO	Chemical	2:25:27:209:235	3:26:28:210:236	0:1:1:9:10	D006965	hyperplasia	Disease	287	288	11
+not_include	L2R	NON-CROSS	235-236	239-240	D007545	isoproterenol|isoproterenol|ISO|ISO|ISO	Chemical	2:25:27:209:235	3:26:28:210:236	0:1:1:9:10	D006984	hypertrophic|hypertrophy|hypertrophic|hypertrophy	Disease	160:200:239:285	161:201:240:286	7:8:10:11
+1:NR:2	R2L	CROSS	60-61	11-13	D006909	hydroxyproline|hydroxyproline	Chemical	60:124	61:125	2:6	D006332	cardiac hypertrophy|cardiac hypertrophy	Disease	5:11	7:13	0:1
+1:NR:2	L2R	CROSS	124-125	160-161	D006909	hydroxyproline|hydroxyproline	Chemical	60:124	61:125	2:6	D006984	hypertrophic|hypertrophy|hypertrophic|hypertrophy	Disease	160:200:239:285	161:201:240:286	7:8:10:11
+1:NR:2	L2R	CROSS	124-125	287-288	D006909	hydroxyproline|hydroxyproline	Chemical	60:124	61:125	2:6	D006965	hyperplasia	Disease	287	288	11
+
+
+19135948	Graft - versus - host disease prophylaxis with everolimus and tacrolimus is associated with a high incidence of sinusoidal obstruction syndrome and microangiopathy : results of the EVTAC trial .|
+A calcineurin inhibitor combined with methotrexate is the standard prophylaxis for graft - versus - host disease ( GVHD ) after allogeneic hematopoietic stem cell transplantation ( HSCT ) .|
+Everolimus , a derivative of sirolimus , seems to mediate antileukemia effects .|
+We report on a combination of everolimus and tacrolimus in 24 patients ( median age , 62 years ) with either myelodysplastic syndrome ( MDS ; n = 17 ) or acute myeloid leukemia ( AML ; n = 7 ) undergoing intensive conditioning followed by HSCT from related ( n = 4 ) or unrelated ( n = 20 ) donors .|
+All patients engrafted , and only 1 patient experienced grade IV mucositis .|
+Nine patients ( 37 % ) developed acute grade II - IV GVHD , and 11 of 17 evaluable patients ( 64 % ) developed chronic extensive GVHD .|
+Transplantation - associated microangiopathy ( TMA ) occurred in 7 patients ( 29 % ) , with 2 cases of acute renal failure .|
+The study was terminated prematurely because an additional 6 patients ( 25 % ) developed sinusoidal obstruction syndrome ( SOS ) , which was fatal in 2 cases .|
+With a median follow - up of 26 months , the 2 - year overall survival rate was 47 % .|
+Although this new combination appears to be effective as a prophylactic regimen for acute GVHD , the incidence of TMA and SOS is considerably higher than seen with other regimens .
+1:CID:2	L2R	NON-CROSS	8-9	18-21	C107135	everolimus|Everolimus|everolimus	Chemical	8:60:79	9:61:80	0:2:3	D006504	sinusoidal obstruction syndrome|sinusoidal obstruction syndrome|SOS|SOS	Disease	18:217:221:273	21:220:222:274	0:7:7:9
+1:CID:2	L2R	NON-CROSS	8-9	22-23	C107135	everolimus|Everolimus|everolimus	Chemical	8:60:79	9:61:80	0:2:3	D014652	microangiopathy|Transplantation - associated microangiopathy|TMA|TMA	Disease	22:178:183:271	23:182:184:272	0:6:6:9
+1:CID:2	L2R	CROSS	79-80	198-201	C107135	everolimus|Everolimus|everolimus	Chemical	8:60:79	9:61:80	0:2:3	D058186	acute renal failure	Disease	198	201	6
+1:CID:2	L2R	NON-CROSS	10-11	18-21	D016559	tacrolimus|tacrolimus	Chemical	10:81	11:82	0:3	D006504	sinusoidal obstruction syndrome|sinusoidal obstruction syndrome|SOS|SOS	Disease	18:217:221:273	21:220:222:274	0:7:7:9
+1:CID:2	L2R	NON-CROSS	10-11	22-23	D016559	tacrolimus|tacrolimus	Chemical	10:81	11:82	0:3	D014652	microangiopathy|Transplantation - associated microangiopathy|TMA|TMA	Disease	22:178:183:271	23:182:184:272	0:6:6:9	1:CID:2	L2R	CROSS	81-82	198-201	D016559	tacrolimus|tacrolimus	Chemical	10:81	11:82	0:3	D058186	acute renal failure	Disease	198	201	6	1:NR:2	R2L	NON-CROSS	8-9	0-6	C107135	everolimus|Everolimus|everolimus	Chemical	8:60:79	9:61:80	0:2:3	D006086	Graft - versus - host disease|graft - versus - host disease|GVHD|GVHD|GVHD|GVHD	Disease	0:41:48:161:176:266	6:47:49:162:177:267	0:1:1:5:5:9	1:NR:2	R2L	NON-CROSS	10-11	0-6	D016559	tacrolimus|tacrolimus	Chemical	10:81	11:82	0:3	D006086	Graft - versus - host disease|graft - versus - host disease|GVHD|GVHD|GVHD|GVHD	Disease	0:41:48:161:176:266	6:47:49:162:177:267	0:1:1:5:5:9	1:NR:2	R2L	NON-CROSS	41-47	35-36	D008727	methotrexate	Chemical	35	36	1	D006086	Graft - versus - host disease|graft - versus - host disease|GVHD|GVHD|GVHD|GVHD	Disease	0:41:48:161:176:266	6:47:49:162:177:267	0:1:1:5:5:9	1:NR:2	R2L	CROSS	65-66	48-49	D020123	sirolimus	Chemical	65	66	2	D006086	Graft - versus - host disease|graft - versus - host disease|GVHD|GVHD|GVHD|GVHD	Disease	0:41:48:161:176:266	6:47:49:162:177:267	0:1:1:5:5:9	1:NR:2	L2R	NON-CROSS	79-80	94-96	C107135	everolimus|Everolimus|everolimus	Chemical	8:60:79	9:61:80	0:2:3	D009190	myelodysplastic syndrome|MDS	Disease	94:97	96:98	3:3	1:NR:2	L2R	NON-CROSS	79-80	104-107	C107135	everolimus|Everolimus|everolimus	Chemical	8:60:79	9:61:80	0:2:3	D015470	acute myeloid leukemia|AML	Disease	104:108	107:109	3:3	1:NR:2	L2R	CROSS	79-80	147-148	C107135	everolimus|Everolimus|everolimus	Chemical	8:60:79	9:61:80	0:2:3	D052016	mucositis	Disease	147	148	4	1:NR:2	L2R	NON-CROSS	81-82	94-96	D016559	tacrolimus|tacrolimus	Chemical	10:81	11:82	0:3	D009190	myelodysplastic syndrome|MDS	Disease	94:97	96:98	3:3	1:NR:2	L2R	NON-CROSS	81-82	104-107	D016559	tacrolimus|tacrolimus	Chemical	10:81	11:82	0:3	D015470	acute myeloid leukemia|AML	Disease	104:108	107:109	3:3	1:NR:2	L2R	CROSS	81-82	147-148	D016559	tacrolimus|tacrolimus	Chemical	10:81	11:82	0:3	D052016	mucositis	Disease	147	148	4	1:NR:2	R2L	CROSS	35-36	18-21	D008727	methotrexate	Chemical	35	36	1	D006504	sinusoidal obstruction syndrome|sinusoidal obstruction syndrome|SOS|SOS	Disease	18:217:221:273	21:220:222:274	0:7:7:9	1:NR:2	R2L	CROSS	65-66	18-21	D020123	sirolimus	Chemical	65	66	2	D006504	sinusoidal obstruction syndrome|sinusoidal obstruction syndrome|SOS|SOS	Disease	18:217:221:273	21:220:222:274	0:7:7:9	1:NR:2	R2L	CROSS	35-36	22-23	D008727	methotrexate	Chemical	35	36	1	D014652	microangiopathy|Transplantation - associated microangiopathy|TMA|TMA	Disease	22:178:183:271	23:182:184:272	0:6:6:9	1:NR:2	R2L	CROSS	65-66	22-23	D020123	sirolimus	Chemical	65	66	2	D014652	microangiopathy|Transplantation - associated microangiopathy|TMA|TMA	Disease	22:178:183:271	23:182:184:272	0:6:6:9	1:NR:2	L2R	CROSS	35-36	94-96	D008727	methotrexate	Chemical	35	36	1	D009190	myelodysplastic syndrome|MDS	Disease	94:97	96:98	3:3	1:NR:2	L2R	CROSS	35-36	104-107	D008727	methotrexate	Chemical	35	36	1	D015470	acute myeloid leukemia|AML	Disease	104:108	107:109	3:3	1:NR:2	L2R	CROSS	35-36	147-148	D008727	methotrexate	Chemical	35	36	1	D052016	mucositis	Disease	147	148	4	1:NR:2	L2R	CROSS	35-36	198-201	D008727	methotrexate	Chemical	35	36	1	D058186	acute renal failure	Disease	198	201	6	1:NR:2	L2R	CROSS	65-66	94-96	D020123	sirolimus	Chemical	65	66	2	D009190	myelodysplastic syndrome|MDS	Disease	94:97	96:98	3:3	1:NR:2	L2R	CROSS	65-66	104-107	D020123	sirolimus	Chemical	65	66	2	D015470	acute myeloid leukemia|AML	Disease	104:108	107:109	3:3	1:NR:2	L2R	CROSS	65-66	147-148	D020123	sirolimus	Chemical	65	66	2	D052016	mucositis	Disease	147	148	4	1:NR:2	L2R	CROSS	65-66	198-201	D020123	sirolimus	Chemical	65	66	2	D058186	acute renal failure	Disease	198	201	6
+
+
+19370593	Long term hormone therapy for perimenopausal and postmenopausal women .|
+BACKGROUND : Hormone therapy ( HT ) is widely used for controlling menopausal symptoms and has also been used for the management and prevention of cardiovascular disease , osteoporosis and dementia in older women .|
+This is an updated version of the original Cochrane review first published in 2005 .|
+OBJECTIVES : To assess the effect of long - term HT on mortality , cardiovascular outcomes , cancer , gallbladder disease , cognition , fractures and quality of life .|
+SEARCH STRATEGY : We searched the following databases to November 2007 : Trials Register of the Cochrane Menstrual Disorders and Subfertility Group , Cochrane Central Register of Controlled Trials , MEDLINE , EMBASE , Biological Abstracts .|
+Also relevant non - indexed journals and conference abstracts .|SELECTION CRITERIA : Randomised double - blind trials of HT versus placebo , taken for at least one year by perimenopausal or postmenopausal women .|
+HT included oestrogens , with or without progestogens , via oral , transdermal , subcutaneous or transnasal routes .|
+DATA COLLECTION AND ANALYSIS : Two authors independently assessed trial quality and extracted data .|
+MAIN RESULTS : Nineteen trials involving 41 , 904 women were included .|
+In relatively healthy women , combined continuous HT significantly increased the risk of venous thrombo - embolism or coronary event ( after one year 's use ) , stroke ( after three years ) , breast cancer and gallbladder disease .|Long - term oestrogen - only HT significantly increased the risk of venous thrombo - embolism , stroke and gallbladder disease ( after one to two years , three years and seven years ' use respectively ) , but did not significantly increase the risk of breast cancer .|
+The only statistically significant benefits of HT were a decreased incidence of fractures and ( for combined HT ) colon cancer , with long - term use .|
+Among women aged over 65 who were relatively healthy ( i . e . generally fit , without overt disease ) and taking continuous combined HT , there was a statistically significant increase in the incidence of dementia .|
+Among women with cardiovascular disease , long - term use of combined continuous HT significantly increased the risk of venous thrombo - embolism . One trial analysed subgroups of 2839 relatively healthy 50 to 59 year old women taking combined continuous HT and 1637 taking oestrogen - only HT , versus similar - sized placebo groups .|
+The only significantly increased risk reported was for venous thrombo - embolism in women taking combined continuous HT : their absolute risk remained low , at less than 1 / 500 .|
+However , this study was not powered to detect differences between groups of younger women .|
+AUTHORS ' CONCLUSIONS : HT is not indicated for the routine management of chronic disease .|
+We need more evidence on the safety of HT for menopausal symptom control , though short - term use appears to be relatively safe for healthy younger women .
+1:CID:2	R2L	CROSS	411-412	364-365	D004967	oestrogens|oestrogen|oestrogen	Chemical	164:253:411	165:254:412	7:11:14	D003704	dementia|dementia	Disease	40:364	41:365	1:13
+1:CID:2	R2L	CROSS	169-170	40-41	D011374	progestogens	Chemical	169	170	7	D003704	dementia|dementia	Disease	40:364	41:365	1:13
+1:CID:2	R2L	NON-CROSS	253-254	247-249	D004967	oestrogens|oestrogen|oestrogen	Chemical	164:253:411	165:254:412	7:11:14	D005705	gallbladder disease|gallbladder disease|gallbladder disease	Disease	79:247:269	81:249:271	3:10:11
+1:CID:2	L2R	NON-CROSS	253-254	262-266	D004967	oestrogens|oestrogen|oestrogen	Chemical	164:253:411	165:254:412	7:11:14	D054556	venous thrombo - embolism|venous thrombo - embolism|venous thrombo - embolism|venous thrombo - embolism	Disease	222:262:385:431	226:266:389:435	10:11:14:15
+1:CID:2	L2R	NON-CROSS	253-254	267-268	D004967	oestrogens|oestrogen|oestrogen	Chemical	164:253:411	165:254:412	7:11:14	D020521	stroke|stroke	Disease	237:267	238:268	10:11
+1:CID:2	L2R	CROSS	169-170	222-226	D011374	progestogens	Chemical	169	170	7	D054556	venous thrombo - embolism|venous thrombo - embolism|venous thrombo - embolism|venous thrombo - embolism	Disease	222:262:385:431	226:266:389:435	10:11:14:15	not_include	R2L	NON-CROSS	411-412	369-371	D004967	oestrogens|oestrogen|oestrogen	Chemical	164:253:411	165:254:412	7:11:14	D002318	cardiovascular disease|cardiovascular disease	Disease	35:369	37:371	1:14
+not_include	R2L	CROSS	169-170	35-37	D011374	progestogens	Chemical	169	170	7	D002318	cardiovascular disease|cardiovascular disease	Disease	35:369	37:371	1:14
+1:NR:2	R2L	CROSS	164-165	38-39	D004967	oestrogens|oestrogen|oestrogen	Chemical	164:253:411	165:254:412	7:11:14	D010024	osteoporosis	Disease	38	39	1
+1:NR:2	R2L	CROSS	169-170	38-39	D011374	progestogens	Chemical	169	170	7	D010024	osteoporosis	Disease	38	39	1
+1:NR:2	R2L	CROSS	164-165	77-78	D004967	oestrogens|oestrogen|oestrogen	Chemical	164:253:411	165:254:412	7:11:14	D009369	cancer	Disease	77	78	3
+1:NR:2	R2L	CROSS	169-170	77-78	D011374	progestogens	Chemical	169	170	7	D009369	cancer	Disease	77	78	3
+1:NR:2	R2L	CROSS	247-249	169-170	D011374	progestogens	Chemical	169	170	7	D005705	gallbladder disease|gallbladder disease|gallbladder disease	Disease	79:247:269	81:249:271	3:10:11
+1:NR:2	R2L	CROSS	311-312	253-254	D004967	oestrogens|oestrogen|oestrogen	Chemical	164:253:411	165:254:412	7:11:14	D050723	fractures|fractures	Disease	84:311	85:312	3:12
+1:NR:2	R2L	CROSS	169-170	84-85	D011374	progestogens	Chemical	169	170	7	D050723	fractures|fractures	Disease	84:311	85:312	3:12
+1:NR:2	R2L	CROSS	164-165	107-109	D004967	oestrogens|oestrogen|oestrogen	Chemical	164:253:411	165:254:412	7:11:14	D008599	Menstrual Disorders	Disease	107	109	4
+1:NR:2	R2L	CROSS	169-170	107-109	D011374	progestogens	Chemical	169	170	7	D008599	Menstrual Disorders	Disease	107	109	4
+1:NR:2	L2R	NON-CROSS	244-246	253-254	D004967	oestrogens|oestrogen|oestrogen	Chemical	164:253:411	165:254:412	7:11:14	D001943	breast cancer|breast cancer	Disease	244:296	246:298	10:11
+1:NR:2	L2R	CROSS	253-254	318-320	D004967	oestrogens|oestrogen|oestrogen	Chemical	164:253:411	165:254:412	7:11:14	D003110	colon cancer	Disease	318	320	12
+1:NR:2	L2R	CROSS	169-170	237-238	D011374	progestogens	Chemical	169	170	7	D020521	stroke|stroke	Disease	237:267	238:268	10:11
+1:NR:2	L2R	CROSS	169-170	244-246	D011374	progestogens	Chemical	169	170	7	D001943	breast cancer|breast cancer	Disease	244:296	246:298	10:11
+1:NR:2	L2R	CROSS	169-170	318-320	D011374	progestogens	Chemical	169	170	7	D003110	colon cancer	Disease	318	320	12
+
+
+
+GEM - P chemotherapy is active in the treatment of relapsed Hodgkin lymphoma .|
+Hodgkin lymphoma ( HL ) is a relatively chemosensitive malignancy .|
+However , for those who relapse , high - dose chemotherapy with autologous stem cell transplant is the treatment of choice which relies on adequate disease control with salvage chemotherapy .|
+Regimens commonly used often require inpatient administration and can be difficult to deliver due to toxicity .|
+Gemcitabine and cisplatin have activity in HL , non - overlapping toxicity with first - line chemotherapeutics , and may be delivered in an outpatient setting .|
+In this retrospective single - centre analysis , patients with relapsed or refractory HL treated with gemcitabine 1 , 000 mg / m ( 2 ) day ( D ) 1 , D8 and D15 ; methylprednisolone 1 , 000 mg D1 - 5 ; and cisplatin 100 mg / m ( 2 ) D15 , every 28 days ( GEM - P ) were included .|
+Demographic , survival , response and toxicity data were recorded .|
+Forty - one eligible patients were identified : median age 27 .|One hundred and twenty - two cycles of GEM - P were administered in total ( median 3 cycles ; range 1 - 6 ) .|
+Twenty of 41 ( 48 % ) patients received GEM - P as second - line treatment and 11 / 41 ( 27 % ) as third - line therapy .|
+Overall response rate ( ORR ) to GEM - P in the entire cohort was 80 % ( complete response ( CR ) 37 % , partial response 44 % ) with 14 / 15 CR confirmed as a metabolic CR on PET and ORR of 85 % in the 20 second - line patients .|
+The most common grade 3 / 4 toxicities were haematological : neutropenia 54 % and thrombocytopenia 51 % .|
+Median follow - up from the start of GEM - P was 4 . 5 years .|
+Following GEM - P , 5 - year progression - free survival was 46 % ( 95 % confidence interval ( CI ) , 30 - 62 % ) and 5 - year overall survival was 59 % ( 95 % CI , 43 - 74 % ) .|
+Fourteen of 41 patients proceeded directly to autologous transplant .|
+GEM - P is a salvage chemotherapy with relatively high response rates , leading to successful transplantation in appropriate patients , in the treatment of relapsed or refractory HL .
+1:CID:2	L2R	CROSS	314-315	330-331	C056507	GEM|Gemcitabine|gemcitabine|GEM|GEM|GEM|GEM|GEM|GEM|GEM	Chemical	0:73:116:160:198:225:254:330:340:398	1:74:117:161:199:226:255:331:341:399	0:4:5:5:8:9:10:12:13:15	D009503	neutropenia	Disease	314	315	11
+1:CID:2	L2R	CROSS	318-319	330-331	C056507	GEM|Gemcitabine|gemcitabine|GEM|GEM|GEM|GEM|GEM|GEM|GEM	Chemical	0:73:116:160:198:225:254:330:340:398	1:74:117:161:199:226:255:331:341:399	0:4:5:5:8:9:10:12:13:15	D013921	thrombocytopenia	Disease	318	319	11
+1:CID:2	L2R	CROSS	136-137	314-315	D008775	methylprednisolone	Chemical	136	137	5	D009503	neutropenia	Disease	314	315	11
+1:CID:2	L2R	CROSS	136-137	318-319	D008775	methylprednisolone	Chemical	136	137	5	D013921	thrombocytopenia	Disease	318	319	11
+1:NR:2	L2R	NON-CROSS	113-114	116-117	C056507	GEM|Gemcitabine|gemcitabine|GEM|GEM|GEM|GEM|GEM|GEM|GEM	Chemical	0:73:116:160:198:225:254:330:340:398	1:74:117:161:199:226:255:331:341:399	0:4:5:5:8:9:10:12:13:15	D006689	Hodgkin lymphoma|Hodgkin lymphoma|HL|HL|HL|HL	Disease	11:14:17:79:113:426	13:16:18:80:114:427	0:1:1:4:5:15
+1:NR:2	L2R	CROSS	0-1	23-24	C056507	GEM|Gemcitabine|gemcitabine|GEM|GEM|GEM|GEM|GEM|GEM|GEM	Chemical	0:73:116:160:198:225:254:330:340:398	1:74:117:161:199:226:255:331:341:399	0:4:5:5:8:9:10:12:13:15	D009369	malignancy	Disease	23	24	1
+1:NR:2	L2R	NON-CROSS	71-72	73-74	C056507	GEM|Gemcitabine|gemcitabine|GEM|GEM|GEM|GEM|GEM|GEM|GEM	Chemical	0:73:116:160:198:225:254:330:340:398	1:74:117:161:199:226:255:331:341:399	0:4:5:5:8:9:10:12:13:15	D064420	toxicity|toxicity|toxicity|toxicities	Disease	71:84:173:310	72:85:174:311	3:4:6:11
+1:NR:2	R2L	NON-CROSS	79-80	75-76	D002945	cisplatin|cisplatin	Chemical	75:146	76:147	4:5	D006689	Hodgkin lymphoma|Hodgkin lymphoma|HL|HL|HL|HL	Disease	11:14:17:79:113:426	13:16:18:80:114:427	0:1:1:4:5:15
+1:NR:2	R2L	NON-CROSS	136-137	113-114	D008775	methylprednisolone	Chemical	136	137	5	D006689	Hodgkin lymphoma|Hodgkin lymphoma|HL|HL|HL|HL	Disease	11:14:17:79:113:426	13:16:18:80:114:427	0:1:1:4:5:15
+1:NR:2	R2L	CROSS	75-76	23-24	D002945	cisplatin|cisplatin	Chemical	75:146	76:147	4:5	D009369	malignancy	Disease	23	24	1
+1:NR:2	R2L	CROSS	136-137	23-24	D008775	methylprednisolone	Chemical	136	137	5	D009369	malignancy	Disease	23	24	1
+1:NR:2	R2L	NON-CROSS	75-76	71-72	D002945	cisplatin|cisplatin	Chemical	75:146	76:147	4:5	D064420	toxicity|toxicity|toxicity|toxicities	Disease	71:84:173:310	72:85:174:311	3:4:6:11	1:NR:2	R2L	CROSS	173-174	136-137	D008775	methylprednisolone	Chemical	136	137	5	D064420	toxicity|toxicity|toxicity|toxicities	Disease	71:84:173:310	72:85:174:311	3:4:6:11	1:NR:2	L2R	CROSS	146-147	314-315	D002945	cisplatin|cisplatin	Chemical	75:146	76:147	4:5	D009503	neutropenia	Disease	314	315	11	1:NR:2	L2R	CROSS	146-147	318-319	D002945	cisplatin|cisplatin	Chemical	75:146	76:147	4:5	D013921	thrombocytopenia	Disease	318	319	11
+
+
+
+24928523	Combination of bortezomib , thalidomide , and dexamethasone ( VTD ) as a consolidation therapy after autologous stem cell transplantation for symptomatic multiple myeloma in Japanese patients .|
+Consolidation therapy for patients with multiple myeloma ( MM ) has been widely adopted to improve treatment response following autologous stem cell transplantation .|
+In this study , we retrospectively analyzed the safety and efficacy of combination regimen of bortezomib , thalidomide , and dexamethasone ( VTD ) as consolidation therapy in 24 Japanese patients with newly diagnosed MM .|
+VTD consisted of bortezomib at a dose of 1 . 3 mg / m ( 2 ) and dexamethasone at a dose of 40 mg / day on days 1 , 8 , 15 , and 22 of a 35 - day cycle , with daily oral thalidomide at a dose of 100 mg / day .|
+Grade 3 - 4 neutropenia and thrombocytopenia were documented in four and three patients ( 17 and 13 % ) , respectively , but drug dose reduction due to cytopenia was not required in any case .|
+Peripheral neuropathy was common ( 63 % ) , but severe grade 3 - 4 peripheral neuropathy was not observed .|
+Very good partial response or better response ( > VGPR ) rates before and after consolidation therapy were 54 and 79 % , respectively .|
+Patients had a significant probability of improving from < VGPR before consolidation therapy to > VGPR after consolidation therapy ( p = 0 . 041 ) .|
+The VTD regimen may be safe and effective as a consolidation therapy in the treatment of MM in Japanese population .
+
+1:CID:2	L2R	CROSS	91-92	149-150	C400082	bortezomib|bortezomib|bortezomib	Chemical	2:67:91	3:68:92	0:2:3	D009503	neutropenia	Disease	149	150	4
+1:CID:2	L2R	CROSS	91-92	151-152	C400082	bortezomib|bortezomib|bortezomib	Chemical	2:67:91	3:68:92	0:2:3	D013921	thrombocytopenia	Disease	151	152	4
+1:CID:2	L2R	CROSS	91-92	182-184	C400082	bortezomib|bortezomib|bortezomib	Chemical	2:67:91	3:68:92	0:2:3	D010523	Peripheral neuropathy|peripheral neuropathy	Disease	182:197	184:199	5:5
+1:CID:2	L2R	CROSS	135-136	149-150	D013792	thalidomide|thalidomide|thalidomide	Chemical	4:69:135	5:70:136	0:2:3	D009503	neutropenia	Disease	149	150	4
+1:CID:2	L2R	CROSS	135-136	151-152	D013792	thalidomide|thalidomide|thalidomide	Chemical	4:69:135	5:70:136	0:2:3	D013921	thrombocytopenia	Disease	151	152	4
+1:CID:2	L2R	CROSS	135-136	182-184	D013792	thalidomide|thalidomide|thalidomide	Chemical	4:69:135	5:70:136	0:2:3	D010523	Peripheral neuropathy|peripheral neuropathy	Disease	182:197	184:199	5:5
+1:CID:2	L2R	CROSS	106-107	149-150	D003907	dexamethasone|dexamethasone|dexamethasone	Chemical	7:72:106	8:73:107	0:2:3	D009503	neutropenia	Disease	149	150	4
+1:CID:2	L2R	CROSS	106-107	151-152	D003907	dexamethasone|dexamethasone|dexamethasone	Chemical	7:72:106	8:73:107	0:2:3	D013921	thrombocytopenia	Disease	151	152	4
+1:CID:2	L2R	CROSS	106-107	182-184	D003907	dexamethasone|dexamethasone|dexamethasone	Chemical	7:72:106	8:73:107	0:2:3	D010523	Peripheral neuropathy|peripheral neuropathy	Disease	182:197	184:199	5:5
+1:NR:2	L2R	NON-CROSS	86-87	91-92	C400082	bortezomib|bortezomib|bortezomib	Chemical	2:67:91	3:68:92	0:2:3	D009101	multiple myeloma|multiple myeloma|MM|MM	Disease	22:33:36:86	24:35:37:87	0:1:1:2
+not_include	L2R	CROSS	91-92	174-175	C400082	bortezomib|bortezomib|bortezomib	Chemical	2:67:91	3:68:92	0:2:3	D006402	cytopenia	Disease	174	175	4
+1:NR:2	L2R	NON-CROSS	69-70	86-87	D013792	thalidomide|thalidomide|thalidomide	Chemical	4:69:135	5:70:136	0:2:3	D009101	multiple myeloma|multiple myeloma|MM|MM	Disease	22:33:36:86	24:35:37:87	0:1:1:2
+not_include	L2R	CROSS	135-136	174-175	D013792	thalidomide|thalidomide|thalidomide	Chemical	4:69:135	5:70:136	0:2:3	D006402	cytopenia	Disease	174	175	4
+1:NR:2	L2R	NON-CROSS	72-73	86-87	D003907	dexamethasone|dexamethasone|dexamethasone	Chemical	7:72:106	8:73:107	0:2:3	D009101	multiple myeloma|multiple myeloma|MM|MM	Disease	22:33:36:86	24:35:37:87	0:1:1:2
+not_include	L2R	CROSS	106-107	174-175	D003907	dexamethasone|dexamethasone|dexamethasone	Chemical	7:72:106	8:73:107	0:2:3	D006402	cytopenia	Disease	174	175	4
+
+
+920167	Fetal risks due to warfarin therapy during pregnancy .|
+Two mothers with heart valve prosthesis were treated with warfarin during pregnancy .|
+In the first case a caesarean section was done one week after replacement of warfarin with heparin .|
+The baby died of cerebral and pulmonary hemorrhage .|The second mother had a male infant by caesarean section .|
+The baby showed warfarin - induced embryopathy with nasal hypoplasia and stippled epiphyses ( chondrodysplasia punctata ) .|
+Nasal hypoplasia with or without stippled epiphyses has now been reported in 11 infants born to mothers treated with warfarin during the first trimester , and a causal association is probable .|
+In view of the risks to both mother and fetus in women with prosthetic cardiac valves it is recommended that therapeutic abortion be advised as the first alternative .
+1:CID:2	L2R	CROSS	36-37	44-48	D014859	warfarin|warfarin|warfarin|warfarin|warfarin	Chemical	4:18:36:63:97	5:19:37:64:98	0:1:2:5:6	D002543	cerebral and pulmonary hemorrhage	Disease	44	48	3
+1:CID:2	L2R	CROSS	36-37	44-48	D014859	warfarin|warfarin|warfarin|warfarin|warfarin	Chemical	4:18:36:63:97	5:19:37:64:98	0:1:2:5:6	D008171	cerebral and pulmonary hemorrhage	Disease	44	48	3
+1:CID:2	L2R	CROSS	36-37	44-48	D014859	warfarin|warfarin|warfarin|warfarin|warfarin	Chemical	4:18:36:63:97	5:19:37:64:98	0:1:2:5:6	D006470	cerebral and pulmonary hemorrhage	Disease	44	48	3
+1:CID:2	L2R	NON-CROSS	63-64	71-73	D014859	warfarin|warfarin|warfarin|warfarin|warfarin	Chemical	4:18:36:63:97	5:19:37:64:98	0:1:2:5:6	D002806	stippled epiphyses|chondrodysplasia punctata|stippled epiphyses	Disease	71:74:83	73:76:85	5:5:6
+1:NR:2	L2R	NON-CROSS	63-64	66-67	D014859	warfarin|warfarin|warfarin|warfarin|warfarin	Chemical	4:18:36:63:97	5:19:37:64:98	0:1:2:5:6	D005315	embryopathy	Disease	66	67	5
+1:NR:2	L2R	CROSS	38-39	44-48	D006493	heparin	Chemical	38	39	2	D002543	cerebral and pulmonary hemorrhage	Disease	44	48	3
+1:NR:2	L2R	CROSS	38-39	44-48	D006493	heparin	Chemical	38	39	2	D008171	cerebral and pulmonary hemorrhage	Disease	44	48	3
+1:NR:2	L2R	CROSS	38-39	44-48	D006493	heparin	Chemical	38	39	2	D006470	cerebral and pulmonary hemorrhage	Disease	44	48	3
+1:NR:2	L2R	CROSS	38-39	66-67	D006493	heparin	Chemical	38	39	2	D005315	embryopathy	Disease	66	67	5
+1:NR:2	L2R	CROSS	38-39	71-73	D006493	heparin	Chemical	38	39	2	D002806	stippled epiphyses|chondrodysplasia punctata|stippled epiphyses	Disease	71:74:83	73:76:85	5:5:6
+
+19681452	Bilateral haemorrhagic infarction of the globus pallidus after cocaine and alcohol intoxication .|
+Cocaine is a risk factor for both ischemic and haemorrhagic stroke .|
+We present the case of a 31 - year - old man with bilateral ischemia of the globus pallidus after excessive alcohol and intranasal cocaine use .|
+Drug - related globus pallidus infarctions are most often associated with heroin .|
+Bilateral basal ganglia infarcts after the use of cocaine , without concurrent heroin use , have never been reported .|
+In our patient , transient cardiac arrhythmia or respiratory dysfunction related to cocaine and / or ethanol use were the most likely causes of cerebral hypoperfusion .
+1:CID:2	R2L	NON-CROSS	66-69	63-64	D003932	heroin|heroin	Chemical	63:77	64:78	3:4	D020520	haemorrhagic infarction of the globus pallidus|globus pallidus infarctions|basal ganglia infarcts	Disease	1:55:66	7:58:69	0:3:4
+1:CID:2	L2R	NON-CROSS	39-44	49-50	D003042	cocaine|Cocaine|cocaine|cocaine|cocaine	Chemical	8:13:49:73:97	9:14:50:74:98	0:1:2:4:5	D002545	ischemia of the globus pallidus	Disease	39	44	2
+1:CID:2	L2R	CROSS	10-11	20-24	D000431	alcohol|alcohol|ethanol	Chemical	10:46:101	11:47:102	0:2:5	D002544	ischemic and haemorrhagic stroke	Disease	20	24	1
+1:CID:2	L2R	CROSS	10-11	20-24	D000431	alcohol|alcohol|ethanol	Chemical	10:46:101	11:47:102	0:2:5	D020521	ischemic and haemorrhagic stroke	Disease	20	24	1
+1:NR:2	R2L	NON-CROSS	8-9	1-7	D003042	cocaine|Cocaine|cocaine|cocaine|cocaine	Chemical	8:13:49:73:97	9:14:50:74:98	0:1:2:4:5	D002543	haemorrhagic infarction of the globus pallidus	Disease	1	7	0
+1:NR:2	R2L	NON-CROSS	10-11	1-7	D000431	alcohol|alcohol|ethanol	Chemical	10:46:101	11:47:102	0:2:5	D002543	haemorrhagic infarction of the globus pallidus	Disease	1	7	0
+1:NR:2	R2L	CROSS	63-64	1-7	D003932	heroin|heroin	Chemical	63:77	64:78	3:4	D002543	haemorrhagic infarction of the globus pallidus	Disease	1	7	0
+1:NR:2	R2L	NON-CROSS	8-9	1-7	D003042	cocaine|Cocaine|cocaine|cocaine|cocaine	Chemical	8:13:49:73:97	9:14:50:74:98	0:1:2:4:5	D020520	haemorrhagic infarction of the globus pallidus|globus pallidus infarctions|basal ganglia infarcts	Disease	1:55:66	7:58:69	0:3:4
+not_include	R2L	NON-CROSS	10-11	1-7	D000431	alcohol|alcohol|ethanol	Chemical	10:46:101	11:47:102	0:2:5	D020520	haemorrhagic infarction of the globus pallidus|globus pallidus infarctions|basal ganglia infarcts	Disease	1:55:66	7:58:69	0:3:4
+1:NR:2	L2R	NON-CROSS	13-14	20-24	D003042	cocaine|Cocaine|cocaine|cocaine|cocaine	Chemical	8:13:49:73:97	9:14:50:74:98	0:1:2:4:5	D002544	ischemic and haemorrhagic stroke	Disease	20	24	1
+1:NR:2	L2R	NON-CROSS	13-14	20-24	D003042	cocaine|Cocaine|cocaine|cocaine|cocaine	Chemical	8:13:49:73:97	9:14:50:74:98	0:1:2:4:5	D020521	ischemic and haemorrhagic stroke	Disease	20	24	1
+1:NR:2	L2R	NON-CROSS	90-92	97-98	D003042	cocaine|Cocaine|cocaine|cocaine|cocaine	Chemical	8:13:49:73:97	9:14:50:74:98	0:1:2:4:5	D001145	cardiac arrhythmia	Disease	90	92	5
+1:NR:2	L2R	NON-CROSS	93-95	97-98	D003042	cocaine|Cocaine|cocaine|cocaine|cocaine	Chemical	8:13:49:73:97	9:14:50:74:98	0:1:2:4:5	D012131	respiratory dysfunction	Disease	93	95	5
+not_include	L2R	NON-CROSS	39-44	46-47	D000431	alcohol|alcohol|ethanol	Chemical	10:46:101	11:47:102	0:2:5	D002545	ischemia of the globus pallidus	Disease	39	44	2
+1:NR:2	L2R	NON-CROSS	90-92	101-102	D000431	alcohol|alcohol|ethanol	Chemical	10:46:101	11:47:102	0:2:5	D001145	cardiac arrhythmia	Disease	90	92	5
+1:NR:2	L2R	NON-CROSS	93-95	101-102	D000431	alcohol|alcohol|ethanol	Chemical	10:46:101	11:47:102	0:2:5	D012131	respiratory dysfunction	Disease	93	95	5
+1:NR:2	R2L	CROSS	63-64	20-24	D003932	heroin|heroin	Chemical	63:77	64:78	3:4	D002544	ischemic and haemorrhagic stroke	Disease	20	24	1
+not_include	R2L	CROSS	63-64	20-24	D003932	heroin|heroin	Chemical	63:77	64:78	3:4	D020521	ischemic and haemorrhagic stroke	Disease	20	24	1
+not_include	R2L	CROSS	63-64	39-44	D003932	heroin|heroin	Chemical	63:77	64:78	3:4	D002545	ischemia of the globus pallidus	Disease	39	44	2
+1:NR:2	L2R	CROSS	77-78	90-92	D003932	heroin|heroin	Chemical	63:77	64:78	3:4	D001145	cardiac arrhythmia	Disease	90	92	5
+1:NR:2	L2R	CROSS	77-78	93-95	D003932	heroin|heroin	Chemical	63:77	64:78	3:4	D012131	respiratory dysfunction	Disease	93	95	5
+
+1728915	Carbamazepine - induced cardiac dysfunction .|
+Characterization of two distinct clinical syndromes .|
+A patient with sinus bradycardia and atrioventricular block , induced by carbamazepine , prompted an extensive literature review of all previously reported cases .|
+From the analysis of these cases , two distinct forms of carbamazepine - associated cardiac dysfunction emerged .|
+One patient group developed sinus tachycardias in the setting of a massive carbamazepine overdose .|
+The second group consisted almost exclusively of elderly women who developed potentially life - threatening bradyarrhythmias or atrioventricular conduction delay , associated with either therapeutic or modestly elevated carbamazepine serum levels .|
+Because carbamazepine is widely used in the treatment of many neurologic and psychiatric conditions , the recognition of the latter syndrome has important implications for the use of this drug in elderly patients .
+1:CID:2	L2R	NON-CROSS	17-18	24-25	D002220	Carbamazepine|carbamazepine|carbamazepine|carbamazepine|carbamazepine|carbamazepine	Chemical	0:24:48:67:98:103	1:25:49:68:99:104	0:2:3:4:5:6	D001919	bradycardia|bradyarrhythmias	Disease	17:85	18:86	2:5
+1:CID:2	L2R	NON-CROSS	19-21	24-25	D002220	Carbamazepine|carbamazepine|carbamazepine|carbamazepine|carbamazepine|carbamazepine	Chemical	0:24:48:67:98:103	1:25:49:68:99:104	0:2:3:4:5:6	D054537	atrioventricular block|atrioventricular conduction delay	Disease	19:87	21:90	2:5
+1:CID:2	L2R	NON-CROSS	59-61	67-68	D002220	Carbamazepine|carbamazepine|carbamazepine|carbamazepine|carbamazepine|carbamazepine	Chemical	0:24:48:67:98:103	1:25:49:68:99:104	0:2:3:4:5:6	D013616	sinus tachycardias	Disease	59	61	4
+not_include	L2R	NON-CROSS	0-1	3-5	D002220	Carbamazepine|carbamazepine|carbamazepine|carbamazepine|carbamazepine|carbamazepine	Chemical	0:24:48:67:98:103	1:25:49:68:99:104	0:2:3:4:5:6	D006331	cardiac dysfunction|cardiac dysfunction	Disease	3:51	5:53	0:3
+1:NR:2	L2R	NON-CROSS	67-68	68-69	D002220	Carbamazepine|carbamazepine|carbamazepine|carbamazepine|carbamazepine|carbamazepine	Chemical	0:24:48:67:98:103	1:25:49:68:99:104	0:2:3:4:5:6	D062787	overdose	Disease	68	69	4
+1:NR:2	L2R	NON-CROSS	103-104	114-115	D002220	Carbamazepine|carbamazepine|carbamazepine|carbamazepine|carbamazepine|carbamazepine	Chemical	0:24:48:67:98:103	1:25:49:68:99:104	0:2:3:4:5:6	D001523	psychiatric	Disease	114	115	6
+
+Low functional programming of renal AT2R mediates the developmental origin of glomerulosclerosis in adult offspring induced by prenatal caffeine exposure .|
+UNASSIGNED : Our previous study has indicated that prenatal caffeine exposure ( PCE ) could induce intrauterine growth retardation ( IUGR ) of offspring .|
+Recent research suggested that IUGR is a risk factor for glomerulosclerosis .|
+However , whether PCE could induce glomerulosclerosis and its underlying mechanisms remain unknown .|
+This study aimed to demonstrate the induction to glomerulosclerosis in adult offspring by PCE and its intrauterine programming mechanisms .|
+A rat model of IUGR was established by PCE , male fetuses and adult offspring at the age of postnatal week 24 were euthanized .|
+The results revealed that the adult offspring kidneys in the PCE group exhibited glomerulosclerosis as well as interstitial fibrosis , accompanied by elevated levels of serum creatinine and urine protein .|
+Renal angiotensin II receptor type 2 ( AT2R ) gene expression in adult offspring was reduced by PCE , whereas the renal angiotensin II receptor type 1a ( AT1aR ) / AT2R expression ratio was increased .|
+The fetal kidneys in the PCE group displayed an enlarged Bowman 's space and a shrunken glomerular tuft , accompanied by a reduced cortex width and an increase in the nephrogenic zone / cortical zone ratio .|
+Observation by electronic microscope revealed structural damage of podocytes ; the reduced expression level of podocyte marker genes , nephrin and podocin , was also detected by q - PCR .|
+Moreover , AT2R gene and protein expressions in fetal kidneys were inhibited by PCE , associated with the repression of the gene expression of glial - cell - line - derived neurotrophic factor ( GDNF ) / tyrosine kinase receptor ( c - Ret ) signaling pathway .|
+These results demonstrated that PCE could induce dysplasia of fetal kidneys as well as glomerulosclerosis of adult offspring , and the low functional programming of renal AT2R might mediate the developmental origin of adult glomerulosclerosis .
+1:CID:2	L2R	NON-CROSS	30-31	37-40	D002110	caffeine|caffeine	Chemical	18:30	19:31	0:1	D005317	intrauterine growth retardation|IUGR|IUGR|IUGR	Disease	37:41:50:96	40:42:51:97	1:1:2:5
+1:CID:2	L2R	CROSS	30-31	134-136	D002110	caffeine|caffeine	Chemical	18:30	19:31	0:1	D005355	interstitial fibrosis	Disease	134	136	6
+1:CID:2	L2R	CROSS	30-31	308-312	D002110	caffeine|caffeine	Chemical	18:30	19:31	0:1	D007674	dysplasia of fetal kidneys	Disease	308	312	11
+1:NR:2	R2L	NON-CROSS	18-19	11-12	D002110	caffeine|caffeine	Chemical	18:30	19:31	0:1	D005921	glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis	Disease	11:56:64:80:130:315:335	12:57:65:81:131:316:336	0:2:3:4:6:11:11
+1:NR:2	R2L	NON-CROSS	143-144	130-131	D003404	creatinine	Chemical	143	144	6	D005921	glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis	Disease	11:56:64:80:130:315:335	12:57:65:81:131:316:336	0:2:3:4:6:11:11
+1:NR:2	R2L	CROSS	149-151	130-131	D000804	angiotensin II|angiotensin II	Chemical	149:170	151:172	7:7	D005921	glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis	Disease	11:56:64:80:130:315:335	12:57:65:81:131:316:336	0:2:3:4:6:11:11
+1:NR:2	R2L	CROSS	315-316	290-291	D014443	tyrosine	Chemical	290	291	10	D005921	glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis|glomerulosclerosis	Disease	11:56:64:80:130:315:335	12:57:65:81:131:316:336	0:2:3:4:6:11:11
+1:NR:2	R2L	CROSS	143-144	96-97	D003404	creatinine	Chemical	143	144	6	D005317	intrauterine growth retardation|IUGR|IUGR|IUGR	Disease	37:41:50:96	40:42:51:97	1:1:2:5
+1:NR:2	R2L	CROSS	149-151	96-97	D000804	angiotensin II|angiotensin II	Chemical	149:170	151:172	7:7	D005317	intrauterine growth retardation|IUGR|IUGR|IUGR	Disease	37:41:50:96	40:42:51:97	1:1:2:5
+1:NR:2	R2L	CROSS	290-291	96-97	D014443	tyrosine	Chemical	290	291	10	D005317	intrauterine growth retardation|IUGR|IUGR|IUGR	Disease	37:41:50:96	40:42:51:97	1:1:2:5
+1:NR:2	R2L	NON-CROSS	143-144	134-136	D003404	creatinine	Chemical	143	144	6	D005355	interstitial fibrosis	Disease	134	136	6
+1:NR:2	R2L	CROSS	149-151	134-136	D000804	angiotensin II|angiotensin II	Chemical	149:170	151:172	7:7	D005355	interstitial fibrosis	Disease	134	136	6
+1:NR:2	R2L	CROSS	290-291	134-136	D014443	tyrosine	Chemical	290	291	10	D005355	interstitial fibrosis	Disease	134	136	6
+1:NR:2	L2R	CROSS	143-144	308-312	D003404	creatinine	Chemical	143	144	6	D007674	dysplasia of fetal kidneys	Disease	308	312	11
+1:NR:2	L2R	CROSS	170-172	308-312	D000804	angiotensin II|angiotensin II	Chemical	149:170	151:172	7:7	D007674	dysplasia of fetal kidneys	Disease	308	312	11
+1:NR:2	L2R	CROSS	290-291	308-312	D014443	tyrosine	Chemical	290	291	10	D007674	dysplasia of fetal kidneys	Disease	308	312	11
