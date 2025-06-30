@@ -15,16 +15,40 @@ from convert_pro import read_docred_con
 from adj_utils import convert_3dsparse_to_4dsparse      
 # import wandb
 from time import time                           
+import pickle
+import os
 
+def save_epoch(epoch, num_steps, model, optimizer, scheduler, train_features, path):
+    save_dict = {
+        "model": model.state_dict(),
+        "optimizer" : optimizer.state_dict(),
+        "scheduler" : scheduler.state_dict(),
+        "epoch": epoch,
+    }
+    with open(os.path.join(path, 'train_features.pkl'), 'wb') as f:
+        pickle.dump(train_features, f)
+    path += f"epoch_{epoch}_lr_{scheduler.get_last_lr()[0]}.pt"
+    torch.save(save_dict, path)
+
+    
 
 def train(args, model, train_features, dev_features):
-    def finetune(features, optimizer, num_epoch, num_steps):
+    def finetune(args, features, optimizer, num_epoch, num_steps, ckpt):
         best_score = -1
+        if ckpt is not None:
+            with open(os.path.join(args.load_epoch, '..', 'train_features.pkl'), 'rb') as f:
+                train_features = pickle.load(f)
         train_dataloader = DataLoader(features, batch_size=args.train_batch_size, shuffle=True, collate_fn=collate_fn, drop_last=True)
-        train_iterator = range(int(num_epoch))
+        start_epoch = 0
+        if ckpt is not None:
+            start_epoch = ckpt['epoch'] + 1
+            
+        train_iterator = range(start_epoch, int(num_epoch))
         total_steps = int(len(train_dataloader) * num_epoch // args.gradient_accumulation_steps)
         warmup_steps = 875          
         scheduler = get_constant_schedule_with_warmup(optimizer, num_warmup_steps=warmup_steps)       
+        if ckpt is not None:
+            scheduler.load_state_dict(ckpt['scheduler'])
         print("Total steps: {}".format(total_steps))
         print("Warmup steps: {}".format(warmup_steps))
         for epoch in train_iterator:
@@ -73,10 +97,18 @@ def train(args, model, train_features, dev_features):
                             torch.save(model.state_dict(), args.save_path)
                             with open('./saved_model/GDA/log_gda.txt', 'a') as f:
                                 f.writelines(f'epoch:{epoch}\n')
-                                f.writelines(f'{dev_output}\n')
+                                    f.writelines(f'{dev_output}\n')
                                 f.writelines('\n')
 
+
+                save_epoch(epoch, num_steps, model, optimizer, scheduler, train_dataloader, args.save_epoch)
+
         return num_steps
+    ckpt = None
+    if args.load_epoch != "":
+        ckpt = torch.load(args.load_epoch)
+        model.load_state_dict(ckpt['model'])
+    
     new_layer = ["extractor", "bilinear", "Linear", "gcn", "reason"]           
     optimizer_grouped_parameters = [
         {"params": [p for n, p in model.named_parameters() if not any(nd in n for nd in new_layer)], },
@@ -84,9 +116,12 @@ def train(args, model, train_features, dev_features):
     ]
     optimizer = AdamW(optimizer_grouped_parameters, lr=args.learning_rate, eps=args.adam_epsilon)
     num_steps = 0
+    if ckpt is not None:
+        optimizer.load_state_dict(ckpt['optimizer'])
+        num_steps = ckpt['num_steps']
     set_seed(args)
     model.zero_grad()
-    finetune(train_features, optimizer, args.num_train_epochs, num_steps)
+    finetune(args, train_features, optimizer, args.num_train_epochs, num_steps, ckpt)
 
 
 def evaluate(args, model, features, tag="dev"):
@@ -194,6 +229,8 @@ def main():
                         help="Number of relation types in dataset.")
     parser.add_argument("--loss_tradeoff", default=1.0, type=float,
                         help="Tradeoff between RE and KD losses.")
+    parser.add_argument("--load_epoch", type=str)
+    parser.add_argument("--save_epoch", type=str)
 
     args = parser.parse_args()
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -215,6 +252,7 @@ def main():
     train_features = read(train_file, tokenizer, max_seq_length=args.max_seq_length)
     dev_features = read(dev_file, tokenizer, max_seq_length=args.max_seq_length)
     test_features = read(test_file, tokenizer, max_seq_length=args.max_seq_length)
+    set_seed(args)
     model = AutoModel.from_pretrained(
         args.model_name_or_path,
         from_tf=bool(".ckpt" in args.model_name_or_path),
@@ -223,7 +261,6 @@ def main():
     config.cls_token_id = tokenizer.cls_token_id
     config.sep_token_id = tokenizer.sep_token_id
     config.transformer_type = args.transformer_type
-    set_seed(args)
     model = DocREModel(config, model, num_labels=args.num_labels, max_entity=args.max_entity_number, loss_tradeoff=args.loss_tradeoff)          
     model.to(args.device)
 
