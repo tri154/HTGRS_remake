@@ -19,6 +19,7 @@ def read_docred_con(file_in, tokenizer, max_seq_length=1024):
     max_entity = 0
     maxlen = 0
     entity_number = []
+    tmppp = 0
     entity_1 =[]
     entity_2 = []
     entity_3 = []
@@ -173,32 +174,8 @@ def read_docred_con(file_in, tokenizer, max_seq_length=1024):
                        'link_pos': sentl_pos,
                        'nodes_info': nodes,
                        }
-            features.append(feature)
-        #print("hts:", len(feature['hts']))
-        entity_number.append(len(entity_pos))
-        print("entity_number:", len(entity_pos))
-        if 1<=len(entity_pos)<5:
-            entity_1.append(sample)
-        elif 5<=len(entity_pos)<10:
-            entity_2.append(sample)
-        elif 10<= len(entity_pos)<15:
-            entity_3.append(sample)
-        else:
-            entity_4.append(sample)
-    print("# of documents {}.".format(i_line))
-    # print("# of positive examples {}.".format(pos_samples))
-    # print("# of negative examples {}.".format(neg_samples))
-    print(f'maxlen:{maxlen}')
-    print(f'max_entity_num:{max_entity}')
-    print(len(entity_1),len(entity_2),len(entity_3),len(entity_4))
-    # with open("./dataset/cdr/divide/first.json", "w") as fh:
-    #     json.dump(entity_1, fh)
-    # with open("./dataset/cdr/divide/second.json", "w") as fh:
-    #     json.dump(entity_2, fh)
-    # with open("./dataset/cdr/divide/third.json", "w") as fh:
-    #     json.dump(entity_3, fh)
-    # with open("./dataset/cdr/divide/fourth.json", "w") as fh:
-    #     json.dump(entity_4, fh)
+            features.append((feature,tmppp))
+            tmppp = tmppp + 1
     return features
 
 

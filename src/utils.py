@@ -18,24 +18,34 @@ def set_seed(args):
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
     torch.cuda.manual_seed_all(args.seed)
-
+def add_logits_to_features(features, indices, logits):
+    for i, idx in enumerate(indices):
+        feature = features[idx][0]
+        if 'teacher_logits' in feature:
+            feature.pop('teacher_logits')
+        feature['teacher_logits'] = logits[i]
+        assert logits[i].shape[0] == len(feature['hts'])
 
 def collate_fn(batch):
-    max_len = max([len(f["input_ids"]) for f in batch])
-    input_ids = [f["input_ids"] + [0] * (max_len - len(f["input_ids"])) for f in batch]
-    input_mask = [[1.0] * len(f["input_ids"]) + [0.0] * (max_len - len(f["input_ids"])) for f in batch]
-    labels = [f["labels"] for f in batch]
+    teacher_logits = None
+    max_len = max([len(f["input_ids"]) for (f, _) in batch])
+    input_ids = [f["input_ids"] + [0] * (max_len - len(f["input_ids"])) for  (f, _) in batch]
+    input_mask = [[1.0] * len(f["input_ids"]) + [0.0] * (max_len - len(f["input_ids"])) for  (f, _) in batch]
+    labels = [f["labels"] for  (f, _) in batch]
     # dists = [f["dists"] for f in batch]
-    entity_pos = [f["entity_pos"] for f in batch]
-    hts = [f["hts"] for f in batch]
-    link_pos = [f["link_pos"] for f in batch]       
-    adjacency = [f["adjacency"] for f in batch]
-    nodes_info = [f["nodes_info"] for f in batch]           
+    entity_pos = [f["entity_pos"] for  (f, _) in batch]
+    hts = [f["hts"] for  (f, _) in batch]
+    link_pos = [f["link_pos"] for  (f, _) in batch]       
+    adjacency = [f["adjacency"] for  (f, _) in batch]
+    nodes_info = [f["nodes_info"] for  (f, _) in batch]           
     nodes_info = [torch.tensor(item, dtype=torch.long) for item in nodes_info]
     input_ids = torch.tensor(input_ids, dtype=torch.long)
     input_mask = torch.tensor(input_mask, dtype=torch.float)
     # output = (input_ids, input_mask, labels, entity_pos, hts)
-    output = (input_ids, input_mask, labels, entity_pos, hts, adjacency, link_pos, nodes_info)
+    if "teacher_logits" in batch[0][0]:
+        teacher_logits = [f["teacher_logits"] for (f, _) in batch]
+    input_indices = [idx for (_, idx) in batch]
+    output = (input_ids, input_mask, labels, entity_pos, hts, adjacency, link_pos, nodes_info, teacher_logits, input_indices)
     #output = (input_ids, input_mask, labels, entity_pos, hts, adjacency, link_pos, nodes_info, sub_nodes, sub_adjacency)
     return output
 

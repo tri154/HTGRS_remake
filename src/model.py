@@ -7,6 +7,7 @@ from torch.nn.utils.rnn import pad_sequence
 from rgcn import RGCN_Layer                     
 from utils import EmbedLayer
 from torch.nn import Softmax
+import torch.nn.functional as F
 
 
 def INF(B, H, W):
@@ -56,8 +57,11 @@ class CC_module(nn.Module):
 
 
 class DocREModel(nn.Module):
-    def __init__(self, config, model, emb_size=512, num_labels=-1, max_entity=22):
+    def __init__(self, config, model, emb_size=512, num_labels=-1, max_entity=22, lower_temperature=2.0, upper_temperature=20.0, loss_tradeoff=1.0):
         super().__init__()
+        self.lower_temperature = lower_temperature
+        self.upper_temperature = upper_temperature
+        self.loss_tradeoff = loss_tradeoff
         self.config = config
         self.model = model
         self.hidden_size = 512
@@ -71,6 +75,7 @@ class DocREModel(nn.Module):
         self.MIP_Linear2 = nn.Linear(emb_size * 4, emb_size * 2)
         self.linear = nn.Linear(emb_size * 4, 1)
         self.MIP_Linear3 = nn.Linear(emb_size * 2, emb_size)
+        self.kd_loss_fnt = nn.KLDivLoss(reduction='batchmean')
         self.softmax = nn.Softmax(dim=1)
         self.bilinear = nn.Linear(emb_size * 2, config.num_labels)
         self.emb_size = emb_size
@@ -241,7 +246,6 @@ class DocREModel(nn.Module):
         return entity_c, entity_s, mention_c, mention_s, ec_rep
 
 
-
     def forward(self,
                 input_ids=None,
                 attention_mask=None,
@@ -252,6 +256,9 @@ class DocREModel(nn.Module):
                 link_pos=None,      
                 nodes_info=None,
                 instance_mask=None,
+                teacher_logits=None,
+                current_epoch=None,
+                num_epoch=None
                 ):
 
         sequence_output, attention = self.encode(input_ids, attention_mask)
@@ -310,12 +317,19 @@ class DocREModel(nn.Module):
         relation_rep = torch.tanh(self.MIP_Linear2(relation_rep))
         logits = self.bilinear(relation_rep)
         # logits = self.bilinear(torch.tanh(enhanced_features))
-        output = (self.loss_fnt.get_label(logits, num_labels=self.num_labels),)
+        output = (self.loss_fnt.get_label(logits, num_labels=self.num_labels),logits)
         if labels is not None:
+            current_temperature = self.upper_temperature - (self.upper_temperature - self.lower_temperature) * current_epoch / (num_epoch - 1.0)
+            current_tradeoff = self.loss_tradeoff * current_epoch / (num_epoch - 1.0)
             labels = [torch.tensor(label) for label in labels]
             labels = torch.cat(labels, dim=0).to(logits)
             loss = self.loss_fnt(logits.float(), labels.float())
+            kd_loss = torch.tensor(0.0)
+            if teacher_logits is not None:
+                teacher_logits = torch.cat(teacher_logits, dim=0).to(logits)
+                kd_loss = self.kd_loss_fnt(F.log_softmax(logits/current_temperature, dim=1),
+                                           F.softmax(teacher_logits/current_temperature, dim=1))
+            loss = loss + kd_loss * current_tradeoff
             a = loss.to(sequence_output)
             output = (a,) + output
-            # print("output:", output)
         return output

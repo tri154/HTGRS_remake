@@ -42,11 +42,18 @@ def train(args, model, train_features, dev_features):
                           'adjacency': adjacency,        
                           'link_pos': batch[6],     
                           'nodes_info': batch[7], 
-                          'sub_nodes': batch[9],
-                          'sub_adjacency': sub_adjacency,      
+                         'teacher_logits':batch[8],
+                          'current_epoch': epoch,
+                          'num_epoch': num_epoch,
+                          #'sub_nodes': batch[9],
+                          #'sub_adjacency': sub_adjacency,      
                           }
                 outputs = model(**inputs)
                 loss = outputs[0] / args.gradient_accumulation_steps
+                input_indices = batch[9]
+                hts_lens = [len(x) for x in inputs['hts']]
+                input_logits = torch.split(outputs[-1].detach().cpu(), hts_lens, dim=0)
+                add_logits_to_features(features, input_indices, input_logits)
                 loss.backward()
                 if step % args.gradient_accumulation_steps == 0:
                     if args.max_grad_norm > 0:
@@ -97,8 +104,11 @@ def evaluate(args, model, features, tag="dev"):
                   'adjacency': adjacency,      
                   'link_pos': batch[6],     
                   'nodes_info': batch[7], 
-                  'sub_nodes': batch[9],
-                  'sub_adjacency': sub_adjacency,     
+                'teacher_logits':batch[8],
+                    'current_epoch': epoch,
+                    'num_epoch': num_epoch,
+                  #'sub_nodes': batch[9],
+                  #'sub_adjacency': sub_adjacency,     
                   }
         with torch.no_grad():
             pred, *_ = model(**inputs)
@@ -106,36 +116,21 @@ def evaluate(args, model, features, tag="dev"):
             pred[np.isnan(pred)] = 0
             preds.append(pred)
             golds.append(np.concatenate([np.array(label, np.float32) for label in batch[2]], axis=0))
-            dists.append(np.concatenate([np.array(dist, np.float32) for dist in batch[8]], axis=0))             
 
     preds = np.concatenate(preds, axis=0).astype(np.float32)
     golds = np.concatenate(golds, axis=0).astype(np.float32)
-    dists = np.concatenate(dists, axis=0).astype(np.float32)                
     tp = ((preds[:, 1] == 1) & (golds[:, 1] == 1)).astype(np.float32).sum()
     tn = ((golds[:, 1] == 1) & (preds[:, 1] != 1)).astype(np.float32).sum()
     fp = ((preds[:, 1] == 1) & (golds[:, 1] != 1)).astype(np.float32).sum()
-    precision = tp / (tp + fp + 1e-5)
-    recall = tp / (tp + tn + 1e-5)
-    f1 = 2 * precision * recall / (precision + recall + 1e-5)
-    tp_intra = ((preds[:, 1] == 1) & (golds[:, 1] == 1) & (dists == 0)).astype(np.float32).sum()
-    tn_intra = ((golds[:, 1] == 1) & (preds[:, 1] != 1) & (dists == 0)).astype(np.float32).sum()
-    fp_intra = ((preds[:, 1] == 1) & (golds[:, 1] != 1) & (dists == 0)).astype(np.float32).sum()
-    precision_intra = tp_intra / (tp_intra + fp_intra + 1e-5)
-    recall_intra = tp_intra / (tp_intra + tn_intra + 1e-5)
-    f1_intra = 2 * precision_intra * recall_intra / (precision_intra + recall_intra + 1e-5)
-    tp_inter = ((preds[:, 1] == 1) & (golds[:, 1] == 1) & (dists == 1)).astype(np.float32).sum()
-    tn_inter = ((golds[:, 1] == 1) & (preds[:, 1] != 1) & (dists == 1)).astype(np.float32).sum()
-    fp_inter = ((preds[:, 1] == 1) & (golds[:, 1] != 1) & (dists == 1)).astype(np.float32).sum()
-    precision_inter = tp_inter / (tp_inter + fp_inter + 1e-5)
-    recall_inter = tp_inter / (tp_inter + tn_inter + 1e-5)
-    f1_inter = 2 * precision_inter * recall_inter / (precision_inter + recall_inter + 1e-5)
+    precision = tp / (tp + fp + 1e-6)
+    recall = tp / (tp + tn + 1e-6)
+    f1 = 2 * precision * recall / (precision + recall + 1e-6)
+
 
     output = {
         "{}_p".format(tag): precision * 100,
         "{}_r".format(tag): recall * 100,
         "{}_f1".format(tag): f1 * 100,
-        "{}_f1_intra".format(tag): f1_intra * 100,
-        "{}_f1_inter".format(tag): f1_inter * 100,
     }
     return f1, output
 
@@ -157,9 +152,9 @@ def main():
     
     parser.add_argument("--model_name_or_path", default="", type=str)
     
-    parser.add_argument("--train_file", default="", type=str)
-    parser.add_argument("--dev_file", default="", type=str)
-    parser.add_argument("--test_file", default="", type=str)
+    parser.add_argument("--train_file", default="convert_train.json", type=str)
+    parser.add_argument("--dev_file", default="convert_dev.json", type=str)
+    parser.add_argument("--test_file", default="convert_test.json", type=str)
     parser.add_argument("--save_path", default="./saved_model/GDA/best_gda.model", type=str)
     parser.add_argument("--load_path", default="", type=str)
 
@@ -181,7 +176,7 @@ def main():
                         help="Number of updates steps to accumulate before performing a backward/update pass.")
     parser.add_argument("--num_labels", default=1, type=int,
                         help="Max number of labels in the prediction.")
-    parser.add_argument("--learning_rate", default=2e-5, type=float,
+    parser.add_argument("--learning_rate", default=3e-5, type=float,
                         help="The initial learning rate for Adam.")
     parser.add_argument("--adam_epsilon", default=1e-6, type=float,
                         help="Epsilon for Adam optimizer.")
@@ -197,6 +192,8 @@ def main():
                         help="random seed for initialization.")
     parser.add_argument("--num_class", type=int, default=2,
                         help="Number of relation types in dataset.")
+    parser.add_argument("--loss_tradeoff", default=1.0, type=float,
+                        help="Tradeoff between RE and KD losses.")
 
     args = parser.parse_args()
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -227,7 +224,7 @@ def main():
     config.sep_token_id = tokenizer.sep_token_id
     config.transformer_type = args.transformer_type
     set_seed(args)
-    model = DocREModel(config, model, num_labels=args.num_labels, max_entity=args.max_entity_number)          
+    model = DocREModel(config, model, num_labels=args.num_labels, max_entity=args.max_entity_number, loss_tradeoff=args.loss_tradeoff)          
     model.to(args.device)
 
     if args.load_path == "":
