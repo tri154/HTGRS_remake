@@ -27,8 +27,7 @@ def save_epoch(epoch, num_steps, model, optimizer, scheduler, train_features, pa
     }
     with open(os.path.join(path, 'train_features.pkl'), 'wb') as f:
         pickle.dump(train_features, f)
-    path += f"epoch_{epoch}_lr_{scheduler.get_last_lr()[0]}.pt"
-    torch.save(save_dict, path)
+    torch.save(save_dict, os.path.join(path, f"epoch_{epoch}_lr_{scheduler.get_last_lr()[0]}.pt"))
 
     
 
@@ -97,7 +96,7 @@ def train(args, model, train_features, dev_features):
                             torch.save(model.state_dict(), args.save_path)
                             with open('./saved_model/GDA/log_gda.txt', 'a') as f:
                                 f.writelines(f'epoch:{epoch}\n')
-                                    f.writelines(f'{dev_output}\n')
+                                f.writelines(f'{dev_output}\n')
                                 f.writelines('\n')
 
 
