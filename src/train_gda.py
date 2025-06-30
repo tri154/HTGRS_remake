@@ -229,7 +229,7 @@ def main():
                         help="Number of relation types in dataset.")
     parser.add_argument("--loss_tradeoff", default=1.0, type=float,
                         help="Tradeoff between RE and KD losses.")
-    parser.add_argument("--load_epoch", type=str)
+    parser.add_argument("--load_epoch", type=str, default="")
     parser.add_argument("--save_epoch", type=str)
 
     args = parser.parse_args()
