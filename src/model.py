@@ -169,6 +169,7 @@ class DocREModel(nn.Module):
                         e_att = attention[i, :, start + offset]
                         mention_att.append(attention[i, :, start + offset])
                     else:
+                        mention_nodes.append(torch.zeros(self.hidden_size).to(sequence_output)) # Quan trọng: Thêm vào đây!
                         m_emb = torch.zeros(self.hidden_size).to(sequence_output)
                         e_att = torch.zeros(h, c).to(attention)
                         mention_att.append(torch.zeros(h, c).to(attention))
@@ -256,11 +257,10 @@ class DocREModel(nn.Module):
                 link_pos=None,      
                 nodes_info=None,
                 instance_mask=None,
-                teacher_logits=None,
+                teacher_logits=[],
                 current_epoch=None,
                 num_epoch=None
                 ):
-
         sequence_output, attention = self.encode(input_ids, attention_mask)
         sequence_output = self.extractor_trans(sequence_output)
         # print("a:", sub_nodes[0].shape)
@@ -325,7 +325,7 @@ class DocREModel(nn.Module):
             labels = torch.cat(labels, dim=0).to(logits)
             loss = self.loss_fnt(logits.float(), labels.float())
             kd_loss = torch.tensor(0.0)
-            if teacher_logits is not None:
+            if len(teacher_logits) > 0 and all(t is not None for t in teacher_logits):
                 teacher_logits = torch.cat(teacher_logits, dim=0).to(logits)
                 kd_loss = self.kd_loss_fnt(F.log_softmax(logits/current_temperature, dim=1),
                                            F.softmax(teacher_logits/current_temperature, dim=1))

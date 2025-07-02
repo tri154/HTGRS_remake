@@ -27,7 +27,6 @@ def add_logits_to_features(features, indices, logits):
         assert logits[i].shape[0] == len(feature['hts'])
 
 def collate_fn(batch):
-    teacher_logits = None
     max_len = max([len(f["input_ids"]) for (f, _) in batch])
     input_ids = [f["input_ids"] + [0] * (max_len - len(f["input_ids"])) for  (f, _) in batch]
     input_mask = [[1.0] * len(f["input_ids"]) + [0.0] * (max_len - len(f["input_ids"])) for  (f, _) in batch]
@@ -42,8 +41,12 @@ def collate_fn(batch):
     input_ids = torch.tensor(input_ids, dtype=torch.long)
     input_mask = torch.tensor(input_mask, dtype=torch.float)
     # output = (input_ids, input_mask, labels, entity_pos, hts)
-    if "teacher_logits" in batch[0][0]:
-        teacher_logits = [f["teacher_logits"] for (f, _) in batch]
+    teacher_logits = []
+    for (f, _) in batch:
+        if "teacher_logits" in f:
+            teacher_logits.append(f["teacher_logits"])
+        else:
+            teacher_logits.append(None)
     input_indices = [idx for (_, idx) in batch]
     output = (input_ids, input_mask, labels, entity_pos, hts, adjacency, link_pos, nodes_info, teacher_logits, input_indices)
     #output = (input_ids, input_mask, labels, entity_pos, hts, adjacency, link_pos, nodes_info, sub_nodes, sub_adjacency)

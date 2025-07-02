@@ -137,10 +137,10 @@ def evaluate(args, model, features, tag="dev"):
                   'hts': batch[4],
                   'adjacency': adjacency,      
                   'link_pos': batch[6],     
-                  'nodes_info': batch[7], 
-                'teacher_logits':batch[8],
-                    'current_epoch': epoch,
-                    'num_epoch': num_epoch,
+                  'nodes_info': batch[7] 
+                # 'teacher_logits':batch[8],
+                #     'current_epoch': epoch,
+                #     'num_epoch': num_epoch,
                   #'sub_nodes': batch[9],
                   #'sub_adjacency': sub_adjacency,     
                   }
@@ -220,7 +220,7 @@ def main():
                         help="Warm up ratio for Adam.")
     parser.add_argument("--num_train_epochs", default=5, type=float,
                         help="Total number of training epochs to perform.")
-    parser.add_argument("--evaluation_steps", default=500, type=int,
+    parser.add_argument("--evaluation_steps", default=-1, type=int,
                         help="Number of training steps between evaluations.")
     parser.add_argument("--seed", type=int, default=66,
                         help="random seed for initialization.")
